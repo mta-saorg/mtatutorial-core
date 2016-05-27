@@ -1,7 +1,7 @@
 <?php
-require 'Parsedown.php';
+require('vendor/autoload.php');
+
 require 'LuaBlock.php';
-require 'libs/Smarty.class.php';
 
 $Parsedown = new Parsedown();
 $smarty = new Smarty();
