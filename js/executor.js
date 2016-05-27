@@ -1,25 +1,23 @@
-var currentExecutor = null;
+var currentExecutor = false;
 
-// Define Lua functions
-var Module = {
-  print: function(output) {
+emscripten.print = function(output) {
+
+    console.log(currentExecutor);
+
     if (!currentExecutor) {
       console.log(output);
       return;
     }
 
-    var outputPre = $(currentExecutor).find('pre.output');
-    outputPre.html(outputPre.html() + output + '\n');
-  }
+    var currentOutput = $(currentExecutor).find('pre.output');
+
+    currentOutput.html(currentOutput.html() + output + '\n');
 };
 
 
-// Add execute buttons (and its actions)
 $(document).ready(function() {
-  /* <script>hljs.initHighlightingOnLoad();</script> */
 
   $('.language-lua').each(function(i, element) {
-    //$(element).parent().prepend('')
 
     var obj = $("<div class=\"executor\">").insertBefore($(element).parent());
     $($(element).parent()).appendTo(obj);
@@ -31,33 +29,28 @@ $(document).ready(function() {
     var input = $($(element).parent()).find('code');
 
     $(obj).append('<code class="executor" style="visibility:hidden;"></code>');
-    $(obj).append('<pre class="output"></pre>');
+    $(obj).append('<pre class="output" style="visibility:hidden;"></pre>');
+    var output = $(obj).find('pre.output');
     $(obj).find('code.executor').text(input.text());
-    //code.text();
 
 
     runButton.click(function() {
       var input = $(obj).find('code.executor');
-      currentExecutor = element;
+      currentExecutor = obj;
+      console.log(currentExecutor);
 
-      if ($(currentExecutor).children('pre.output').length == 0) {
-        $(currentExecutor).append('<pre class="output"></pre>');
-      }
-
-      var outputPre = $(currentExecutor).find('pre.output');
-      outputPre.html('');
-
-      console.log(input.text());
+      var currentOutput = $(currentExecutor).find('pre.output');
+      currentOutput.html("");
+      currentOutput.css("visibility", "visible");
 
       try {
         L.execute(input.text());
       }
       catch (e) {
-        outputPre.html(e.toString());
+        output.html(e.toString());
       }
     });
 
-    // Add "run in tester" button
     $(obj).find('label').append('<a class="btn btn-xs btn-info">In Tester kopieren</a>');
     var runTesterButton = $(element).find('label a');
     runTesterButton.click(function() {
@@ -66,5 +59,7 @@ $(document).ready(function() {
     });
   });
 
-  //hljs.initHighlightingOnLoad();
+  setTimeout(function() {
+    hljs.initHighlightingOnLoad();
+  }, 350);
 });
