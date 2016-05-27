@@ -1,0 +1,39 @@
+.executor label {
+  background-color: grey;
+  display: block;
+  padding: 5px;
+  color: white;
+  margin-bottom: 0;
+}
+
+.executor pre {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.executor label span.glyphicon {
+  color: green;
+  font-size: 18px;
+  margin-right: 4px;
+
+  display: block;
+  float: left;
+}
+
+.executor label a {
+  float: right;
+}
+
+.executor label span:hover {
+  cursor: pointer;
+  color: red !important;
+}
+
+.executor div a {
+  color: green;
+  cursor: pointer;
+}
+
+.executor div a:hover {
+  color: red !important;
+}
