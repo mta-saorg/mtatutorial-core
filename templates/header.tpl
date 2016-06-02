@@ -17,13 +17,13 @@
     <title>Simple Sidebar - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-	<link rel="stylesheet" href="styles/rainbow.css">
-    <link href="css/executor.css" rel="stylesheet">
-    <link href="css/tester.css" rel="stylesheet">
+    <link href="public/css/simple-sidebar.css" rel="stylesheet">
+	  <link href="public/css/rainbow.css" rel="stylesheet">
+    <link href="public/css/executor.css" rel="stylesheet">
+    <link href="public/css/tester.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
